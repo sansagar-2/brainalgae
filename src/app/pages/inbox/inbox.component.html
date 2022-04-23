@@ -1,0 +1,113 @@
+<style>
+
+    /***MESSAGE BOX***/
+.chatContainer{}
+.chatContainer .fillBg{background: #fff; box-shadow: 1px 2px 3px rgba(195, 195, 195, 1); border-radius: 10px; padding: 15px;}
+.chatContainer .leftSec{padding:13px;-ms-flex: 0 0 29.333333%;flex: 0 0 29.333333%;max-width: 29.333333%;}
+.chatContainer .leftSec .inner{border:solid 1px #c3c3c3; position:relative; height:100%; display:block;border-radius: 7px; padding:10px;}
+.chatContainer .leftSec .searchBox svg{height:14px; width:14px;}
+.chatContainer .leftSec .searchBox .form-control{padding-left:35px;}
+.chatContainer .leftSec .form-control{height:32px; padding:0 .75rem;font-size: 13px;}
+.chatContainer .leftSec .listOfUsers{max-height:325px; overflow:auto; position:relative; margin-right:-10px; }
+.chatContainer .leftSec .listOfUsers .userBox{padding:10px 0;text-decoration:none !important;}
+.chatContainer .leftSec .listOfUsers .userBox .img{height:35px; width:35px; background:#dbdbdb; border-radius:100%; display:block;}
+.chatContainer .leftSec .listOfUsers .userBox h3{font-weight: 400; font-style: normal; font-size: 14px; color:#333; padding-left:10px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.chatContainer .leftSec .listOfUsers .userBox h3 small{font-weight: 400; font-style: normal; font-size: 12px; color: #9B9B9B; margin:0; display:block;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+
+.chatContainer .rightSec{position:relative; padding:0;    -ms-flex: 0 0 70.666667%;flex: 0 0 70.666667%;max-width: 70.666667%;}
+.chatContainer .rightSec .date{text-align:center;font-weight: 400; font-style: normal; font-size: 15px; color:#333; border-bottom:solid 1px #dbdbdb; padding:10px 0;}
+.chatContainer .rightSec .chatDetail{height:355px; background:#fff; overflow:auto; padding:10px 20px;}
+.chatContainer .rightSec .chatDetail .userText{padding:5px 0; position:relative;}
+.chatContainer .rightSec .chatDetail .userText .status{position:absolute; right:0; bottom:0; background:#fff; padding:5px;font-weight: 700; font-style: normal; font-size: 12px; color:#333; z-index:1;}
+.chatContainer .rightSec .chatDetail .userText .status a.link{color:#333; text-decoration:underline;}
+.chatContainer .rightSec .chatDetail .userText .icon{height: 35px; width: 35px; background: #dbdbdb; border-radius: 100%; display:block;}
+.chatContainer .rightSec .chatDetail .userText .detail{padding-left:10px;}
+.chatContainer .rightSec .chatDetail .userText .detail h2{font-weight: 400; font-style: normal; font-size: 15px; color:#333; padding-bottom:5px;}
+.chatContainer .rightSec .chatDetail .userText .detail h2 small{font-weight: 400; font-style: normal; font-size: 12px; color: #9B9B9B; padding-left:10px;}
+.chatContainer .rightSec .chatDetail .userText .detail p{font-size: 12px; color: #797979;font-weight: 400; font-style: normal}
+.chatContainer .rightSec .chatFooter{padding:10px 20px;}
+.chatContainer .rightSec .chatFooter .circle{height:35px; width:35px; color:#333; background:#dbdbdb; border-radius:100%;display: -ms-flexbox; display: flex;-ms-flex-align: center; align-items: center;-ms-flex-pack: center; justify-content: center;font-size: 13px;}
+.chatContainer .rightSec .chatFooter .form-control{border-color:rgba(184, 184, 184, 1); height:26px;}
+.chatContainer .rightSec .chatFooter .btn{height:26px; width:26px; background:#a6a6a6; padding:0; line-height:20px;}
+.chatContainer .rightSec .chatFooter .black-btn{padding:6px 10px}
+
+</style>
+	  
+<div class="container pt-90 px-5">
+    <div class="rightWrapper pb-5 px-5">
+        
+        <h2 class="boxHeading m-0 text-center pb-4">Messages</h2>
+        
+        <!----MESSAGE BOX---->
+        <div class="chatContainer d-flex px-5">
+        	
+            <div class="leftSec fillBg mr-3">
+                <div class="inner">
+                	<div class="searchBox mb-2">
+                        <svg xmlns="" viewBox="0 0 12 12" height="14px" width="14px"><path d="M307.86,397.86a3.22,3.22,0,1,0-2.28.95A3.11,3.11,0,0,0,307.86,397.86Zm4.37,3.07a0.93,0.93,0,0,1-.66,1.57,0.86,0.86,0,0,1-.65-0.27l-2.47-2.47a4.94,4.94,0,0,1-2.88.89,5,5,0,0,1-2-.4,5,5,0,0,1-2.7-2.7,5.06,5.06,0,0,1,0-3.94,5,5,0,0,1,2.7-2.7,5.06,5.06,0,0,1,3.94,0,5,5,0,0,1,2.7,2.7,5,5,0,0,1,.4,2,4.94,4.94,0,0,1-.89,2.88Z" transform="translate(-300.5 -390.5)"></path></svg>
+                        <input type="text" class="form-control" />
+                    </div>
+                    <select class="form-control mb-2">
+                        <option>All</option>
+                        <option>My Network</option>
+                        <option>Mentors</option>
+                    </select>
+                    <div class="listOfUsers" *ngFor="let con of connectedUser.data" style="max-height: 400px;overflow-x: auto;">
+                    	<a href="javascript:;" (click)="sendTo(con)"  class="userBox d-flex align-items-center">
+                            <div><span class="img">&nbsp;</span></div>
+                           
+                            <h3> {{getPersonName(con)}} </h3>
+                        </a>
+                       
+                    </div> <!-- {{getPersonName(con)}} -->
+                </div>
+            </div>
+            
+            <div class="rightSec fillBg"  >
+                <div class="date">Today</div>
+                <div class="chatDetail">
+                <div class="" *ngFor="let m of inboxAllMessage.data" style="max-height: 200px;overflow-x: auto;">
+                	<div class="userText d-flex">
+                    	<span><span class="icon"></span></span>
+                        <div class="detail">
+                           
+                          <h2> SendTo:  {{getMailPersonName(m.sendToUserId)}} <small>{{m.createtime|date}}</small></h2>
+                          <h2>SendBy: {{getMailPersonName(m.sendByUserId)}}</h2>
+                          <p>Subject: {{m.msgsubject}}</p>
+                          <p>Body: {{m.msgbody}}</p>
+                        </div>
+                        <!-- <span class="status">
+                        	<img src="images/svgIcon/eye.svg" alt="" class="seen" />{{m.msgStatus}}
+                        </span> -->
+                    </div>
+                </div>
+            </div>
+                <div class="chatFooter d-flex align-items-center">
+                    <a href="javascript:;" class="circle mr-2">Me</a>
+                    <span class="flex-fill mr-2"><input type="text" placeholder="mail subject ..." class="form-control" [(ngModel)]="mailSub" /></span>
+                    <span class="flex-fill mr-2"><input type="text" placeholder="mail body ..." class="form-control" [(ngModel)]="mailtxt" /></span>
+                    <a href="javascript:;" class="btn mr-2"><img src="images/svgIcon/smily.svg" alt="" /></a>
+                    <a href="javascript:;" class="btn mr-2"><img src="images/svgIcon/attach.svg" alt="" /></a>
+                    <a href="javascript:;" class="black-btn" (click)="sendMail()" >Send</a>
+                </div>
+            </div>
+            <br/>
+           
+        </div>
+        <!----END MESSAGE BOX---->
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<!-- SCRIPT PART -->
+	<script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+    
+    </script>

@@ -1,0 +1,30 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 col-md-6 col-12 pb-4" ng-app="">
+                <h1>Questions</h1>
+                <p>{{questions.data[0].title}}</p>
+                <ul>
+                    
+              <div *ngFor="let question of questions.data;">
+                 
+                <div class="comment mt-4 text-justify float-left"> 
+                    <!-- <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40"> -->
+                    <!-- <h4>{{content.topicName}}</h4>  -->
+                    <li>{{question.title}}</li>
+                    <!-- <span>- 20 October, 2018</span> <br> -->
+                    <!-- <p>{{content.topicName}}</p> -->
+                </div>
+            
+              </div> 
+            </ul>
+              <!-- <div class="comment mt-4 text-justify float-left"> 
+                <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+                <h4>Jhon Doe</h4> <span>- 20 October, 2018</span> <br>
+                <p>iusrgfiserughisergh {{comment}}</p>
+            </div> -->
+            </div>
+           
+        </div>
+    </div>
+</section>

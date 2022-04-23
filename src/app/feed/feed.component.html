@@ -1,0 +1,261 @@
+<style>
+    body {
+        margin: 0;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #141416;
+        background-color: #fff;
+    }
+
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+        font-weight: 800;
+    }
+
+    .btn {
+        font-weight: 800;
+        background-color: transparent;
+    }
+
+    /* Custom Styles */
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        position: relative;
+        font-size: 1.25rem;
+        align-items: center;
+        flex-shrink: 0;
+        line-height: 1;
+        user-select: none;
+        border-radius: 50%;
+        justify-content: center;
+    }
+
+    .avatar-xl {
+        width: 96px;
+        height: 96px;
+    }
+
+    .avatar-img {
+        color: transparent;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        text-align: center;
+        text-indent: 10000px;
+        border-radius: 50%;
+    }
+
+    .avatar-status {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: inline-flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: baseline;
+        border: 0.125rem solid #fff;
+        width: 1.3125rem;
+        height: 1.3125rem;
+        line-height: 1;
+        font-size: 0.625rem;
+        border-radius: 50%;
+    }
+
+    .btn-icon {
+        position: relative;
+        display: inline-flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        width: 3rem;
+        height: 3rem;
+        padding: 0;
+    }
+    .feed-area{
+        background: #ffffff;
+    }
+    .btn-share{
+        background-color: #1976d2;
+    }
+
+    a{transition: 0.3s; -moz-transition: 0.3s; -webkit-transition: 0.3s; -o-transition: 0.3s; -ms-transition: 0.3s;}
+    .btn-info{background:#0073b1; border-color:#0073b1; text-transform: capitalize; font-weight: 400;;}
+    .profilePage{}
+    .card-body .actionBtn{padding-bottom: 5px;}
+    .card-body .actionBtn select,
+    .card-body .actionBtn a{min-height: 35px; display: inline-block;  text-decoration: none;background: rgba(0,0,0,0.05);border: solid 1px rgba(0,0,0,0.1);padding: 5px 10px;border-radius: 4px;text-transform: capitalize; margin-right: 5px; color: #117a8b;}
+    .card-body .actionBtn h5{margin: 0; padding: 0 0 6px; font-weight: 700; font-size: 20px; text-transform: capitalize;}
+    .card-body .actionBtn a span{display: inline-block; padding: 0 0 0 1px; color: #666; background: #fff; border-radius: 20px; float: left; line-height: 1; height: 20px; width: 20px; margin-right: 8px; text-align: center; font-weight: 600; font-size: 16px; border: solid 1px #ccc; margin-top: 2px; box-shadow: 2px 2px 2px rgba(0,0,0,0.2);}
+    .card-body .actionBtn a svg path{fill:#666;}
+
+    .postArea{position: relative;}
+.postArea .postBox{position: relative; background:#fff; margin:10px 0; padding:15px; border-radius: 4px;box-shadow: 4px 4px 4px rgba(0,0,0,0.1);}
+.postArea .postBox .head{}
+.postArea .postBox .head .userIcon{height: 40px;width: 40px;border: solid 2px rgba(0,0,0,0.1);border-radius: 100%;overflow: hidden;margin-right: 15px;text-align: center;padding-top: 8px;}
+.postArea .postBox .head .userIcon svg{width: 30px; height: auto;}    
+.postArea .postBox .head h2{margin: 0; padding: 0; font-size: 18px; font-weight: 600;}
+.postArea .postBox .head h2 small{    display: block;color: rgba(0,0,0,0.6);}
+.postArea .postBox .content{padding: 15px; background: rgba(0,0,0,0.05); margin: 15px 0; border-radius: 4px;}
+.postArea .postBox .content h3{margin: 0 0 10px; padding: 0; font-size: 16px; font-weight: 700;}
+.postArea .postBox .content p{margin: 0; color: rgba(0,0,0,0.7); line-height: 20px;}
+.postArea .postBox .actionArea{}
+.postArea .postBox .actionArea .btn{display: block;position: relative;border: solid 1px #0073b1;
+    border-radius: 2px;text-align: center;background: #fff;padding: 5px 0;text-decoration: none;color: #0073b1; margin:5px 0;
+    padding: 5px 15px; margin-right: 10px; font-size: 14px; font-weight: 400; text-transform: capitalize;}
+    .postArea .postBox .actionArea .btn:hover{box-shadow:4px 4px 4px rgba(0,0,0,0.1); border-color:#0073b1; background:#0073b1; color:#fff;}
+    .recActiv{}
+    .recActiv h3{margin: 0; padding: 15px 0 10px; border-bottom: solid 1px rgba(0,0,0,0.1); margin-bottom: 5px;font-size: 18px; font-weight: 600;}
+    .recActiv .listOfActiv{-ms-flex-align: center; align-items: center;display: -ms-flexbox; display: flex; padding:10px 0; border-bottom: solid 1px rgba(0,0,0,0.1);}
+    .recActiv .listOfActiv span.text{text-transform: capitalize; color:#666;}
+    .recActiv .listOfActiv span.coun
+    \t{margin-left: auto; background: #f1f1f1; border: solid 1px #ccc; height: 22px; text-align: center; padding: 3px 6px 0; line-height: 1; border-radius: 4px; font-size: 14px;}
+</style>
+
+
+<div class="container profilePage">
+    <div class="row">
+        <div class="col-lg-4 offset-lg-1 order-lg-2 feed-area" *ngIf="show" >
+          <div class="recActiv">
+            <h3>Recent Activity</h3>
+            <div class="listOfActiv" *ngFor="let activity of activities.data">
+                <span class="text">{{currentUser.userName}} has {{activity.componentActivityType}} the {{activity.componenttype}} on date {{activity.activityendtime |date}} </span> 
+                <span class="count"></span> 
+            </div>
+            <h3>Notifications</h3>
+            <div class="listOfActiv" *ngFor="let notification of notifications.data">
+                <span class="text">{{currentUser.userName}} has {{notification.actiontype}} with {{notification.actionforuserid}} on date {{notification.activityendtime |date}} </span> 
+                <span class="count">{{notification.actionstatus}}</span>   
+            </div>
+</div>
+        </div>
+        <div class="col-12 col-lg-7 order-lg-1">
+            <div class="pb-2">
+                <div class="input-group input-group-lg"><span style="display: none;" class="input-group-text bg-light border-0"
+                        id="search-icon">
+                        <i data-feather="search"></i></span>
+                    <input class="form-control bg-light border-0" type="text" placeholder="Search" aria-label="Search"
+                        aria-describedby="search-icon">
+                </div>
+            </div>
+            <section class="card" *ngIf="show">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make
+                                a Post</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body" >
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                            <div class="actionBtn">
+                           <div> <h5>{{currentUser.userName}}</h5>
+                            <select>
+                                <option>Public</option>
+                                <option>Network</option>
+                            </select>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                            <a href="#" data-toggle="modal" data-target="#myModal"><span>+</span> <svg height="20px" width="20px" xmlns="" viewBox="0 0 32 32"><path d="M290.5,380.5v32h32v-32h-32Zm29,29h-26v-26h26v26Zm-21.68-5h17.81a1.1,1.1,0,0,0,1.12-1.08,1.07,1.07,0,0,0-.33-0.78L312,395.31a1.13,1.13,0,0,0-1.57,0L309,398.72l-3.66-5.56a1.13,1.13,0,0,0-1.57,0l-6.68,9.5a1.06,1.06,0,0,0,0,1.53A1.13,1.13,0,0,0,297.82,404.5Zm14.47-11.67a2.17,2.17,0,1,0-2.23-2.17A2.2,2.2,0,0,0,312.29,392.83Z" transform="translate(-290.5 -380.5)"/></svg></a>
+                            <a href="#" data-toggle="modal" data-target="#myModal"><span>+</span> <svg height="20px" width="20px" xmlns="" viewBox="0 0 30 26"><path class="cls-1" d="M322.5,386.5h-29v20h30V387C323.5,386.49,323,386.5,322.5,386.5Zm-2,17h-24v-14h24v14Zm-16.68-22.43a1.88,1.88,0,0,0-1.35-.57h-7.1a1.87,1.87,0,0,0-1.87,1.86v2.14h13Z" transform="translate(-293.5 -380.5)"/></svg></a>
+                            <a href="#" data-toggle="modal" data-target="#myModal"><span>+</span> <svg height="20px" width="20px" xmlns="" viewBox="0 0 40.03 39.98"><path d="M38.32,12.23,27.86,1.68a6,6,0,0,0-8.28,0L1.74,19.35a5.92,5.92,0,0,0,0,8.34L12.17,38.24a5.84,5.84,0,0,0,8.28,0L38.29,20.56a5.89,5.89,0,0,0,0-8.33Zm-2.77,5.53L17.72,35.48a2.05,2.05,0,0,1-2.8,0L12.44,33a4,4,0,0,0-.12-5.41A3.87,3.87,0,0,0,7,27.42L4.46,24.91a2,2,0,0,1-.56-1.38,1.94,1.94,0,0,1,.57-1.37L22.31,4.45a1.94,1.94,0,0,1,1.39-.57,2,2,0,0,1,1.41.58L27.59,7a4,4,0,0,0,.13,5.41,3.87,3.87,0,0,0,5.36.13L35.57,15a2,2,0,0,1,.56,1.38A1.91,1.91,0,0,1,35.55,17.76ZM10,20.72l9.08,9.16,11-10.68L21,10Zm9.1,6.4-6.32-6.37,8.21-8,6.32,6.38Z"/></svg></a>
+                            <a href="#" data-toggle="modal" data-target="#myModal"><span>+</span> <svg height="20px" width="20px" xmlns="" viewBox="0 0 30 30"><path d="M0,1.07V28.93A1.07,1.07,0,0,0,1.07,30H28.93A1.07,1.07,0,0,0,30,28.93V1.07A1.07,1.07,0,0,0,28.93,0H1.07A1.07,1.07,0,0,0,0,1.07ZM6.43,27.32a.54.54,0,0,1-.54.54H2.68a.54.54,0,0,1-.54-.54V24.11a.54.54,0,0,1,.54-.54H5.89a.54.54,0,0,1,.54.54Zm0-7.18a.54.54,0,0,1-.54.53H2.68a.54.54,0,0,1-.54-.53V16.92a.54.54,0,0,1,.54-.53H5.89a.54.54,0,0,1,.54.53Zm0-7.06a.54.54,0,0,1-.54.53H2.68a.54.54,0,0,1-.54-.53V9.86a.54.54,0,0,1,.54-.53H5.89a.54.54,0,0,1,.54.53Zm0-7.19a.54.54,0,0,1-.54.54H2.68a.54.54,0,0,1-.54-.54V2.68a.54.54,0,0,1,.54-.54H5.89a.54.54,0,0,1,.54.54ZM20.89,15H9.11a.54.54,0,0,1-.54-.54V13.39a.54.54,0,0,1,.54-.53H20.89a.54.54,0,0,1,.54.53v1.07A.54.54,0,0,1,20.89,15Zm7,12.32a.54.54,0,0,1-.54.54H24.11a.54.54,0,0,1-.54-.54V24.11a.54.54,0,0,1,.54-.54h3.21a.54.54,0,0,1,.54.54Zm0-7.18a.54.54,0,0,1-.54.53H24.11a.54.54,0,0,1-.54-.53V16.92a.54.54,0,0,1,.54-.53h3.21a.54.54,0,0,1,.54.53Zm0-7.06a.54.54,0,0,1-.54.53H24.11a.54.54,0,0,1-.54-.53V9.86a.54.54,0,0,1,.54-.53h3.21a.54.54,0,0,1,.54.53Zm0-7.19a.54.54,0,0,1-.54.54H24.11a.54.54,0,0,1-.54-.54V2.68a.54.54,0,0,1,.54-.54h3.21a.54.54,0,0,1,.54.54Z"/></svg></a>
+                    </div>
+                        </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="message">post</label>
+                                <input type="text" placeholder="Add heading" class="form-control" style="margin-bottom: 5px;" />
+                                <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking..."></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit"  class="btn btn-info">Post</button>
+                    </div>
+                </div>
+            </section>
+            <section class="py-4">
+                <h1 class="h3" style="display: block; border-bottom: solid 1px rgba(0,0,0,0.2); padding: 0 0 5px; margin: 0px 0 12px; font-size: 20px; font-weight: 700;">Feed</h1>
+
+
+                <div class="postArea" *ngFor="let item of items.dataObj">
+                    <div class="postBox">
+                        <div class="head d-flex">
+                            <div class="userIcon">
+                                <svg xmlns="" viewBox="0 0 148.01 142.98" height="100px" width="103px"><path d="M148,136.05h0a6.92,6.92,0,0,1-6.93,6.92H6.94A6.93,6.93,0,0,1,0,136.06H0s0-25.22,18.47-34.39c11.69-5.79,7.19-1.09,21.54-7s17.75-8,17.75-8L57.89,73s-5.37-4.1-7-17c-3.36,1-4.47-3.93-4.67-7.06s-2-12.44,2.15-11.59c-.84-6.3-1.44-12-1.14-15C48.22,11.83,58.41.81,74.11,0,92.58.8,99.9,11.83,100.92,22.38c.3,3-.36,8.69-1.2,15,4.11-.84,2.32,8.57,2.13,11.59s-1.32,8-4.68,7.05c-1.67,12.86-7,16.92-7,16.92l.13,13.6s3.4,1.93,17.75,7.86,9.84,1.5,21.53,7.3C148,110.83,148,136.05,148,136.05Z"/></svg>
+                            </div>
+                            Hello {{item.feedUserId}}
+                            <h2><small>{{item.feedTimeStrip}}</small></h2>
+                            <button class="btn btn-icon btn-text-dark dropdown-toggle" style="margin-left: auto;" data-toggle="dropdown" aria-expanded="false"><i data-feather="more-vertical"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Unsubscribe</a></li> -->
+                            </ul>
+                        </div>
+
+                    <!-- <img class="rounded w-100 mt-3" src="https://i.ibb.co/RYbgG6K/mango-blue.jpg" alt="feed"> -->
+                    <div class="content">
+                        <h3>{{item.feedTitle}}</h3>
+                        <p>{{item.feedBody}}</p>
+                    </div>
+                    <div class="actionArea d-flex align-item-center">
+                        <button class="btn" type="button">
+                            {{item.postLike}} Like
+                        </button>
+                        <button class="btn" type="button">
+                            {{item.postComment}} Comment
+                        </button>
+                        <button class="btn" type="button">
+                            {{item.postShare}} Share
+                        </button>
+                        <!-- <button class="btn" type="button">
+                            <i data-feather="share-2"></i>
+                        </button> -->
+                    </div>
+                    </div>
+                </div>
+
+                <!-- <div>Take a look at <a href="https://bootstrap-minui.github.io/" target="_blank" rel="noopener noreferrer">Minui</a> for more clean and minimal templates built with Bootstrap</div> -->
+            </section>
+        </div>
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add Files :</h4>
+            </div>
+            <div class="modal-body">
+              <user-list></user-list>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+</div>

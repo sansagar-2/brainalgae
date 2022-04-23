@@ -1,0 +1,189 @@
+<style>
+  .d-flex{display:-ms-flexbox!important;display:flex!important}.d-inline-flex{display:-ms-inline-flexbox!important;display:inline-flex!important}
+  
+ .circleLink{ height:35px; width:35px; border-radius:100%; background:#f2f2f2; text-align:center;display: -ms-flexbox; display: flex;-ms-flex-align: center; align-items: center;-ms-flex-pack: center; justify-content: center;border:solid 1px transparent;}
+ .circleLink:hover{border-color:#b8b8b8; box-shadow:2px 2px 2px rgba(0,0,0,0.2); background:#fff;} 
+ .notification.open .dropdown-menu,
+ .dropdown.open .dropdown-menu{opacity: 1; left:auto; right:0;}
+ .notification.open .dropdown-menu{width: 300px; max-height: auto;}
+ 
+</style>
+<nav class="" id="navbar-main">
+  <div class="container-fluid d-flex justify-content-between">
+    <!-- Brand -->
+    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active" [routerLink]="['/dashboard']">{{getTitle()}}</a>
+    <!-- Form -->
+    <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+      <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+        <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
+          <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
+          (blur)="focus = false">
+        </div>
+      </div>
+    </form>
+
+    <div class="d-flex">
+      <a href="javascript:;" routerLinkActive="active" [routerLink]="['/inbox']" class="circleLink ml-4"><img src="../../../assets/img/icons/chatIcon.svg" alt="" /></a>
+      
+      <!--NOTIFICATION-->
+      <div class="btn-group notification">
+        <a href="javascript:;" class="circleLink ml-3" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+            <img src="../../../assets/img/icons/bell.svg" alt="" />
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" >
+            <!-- style="max-height: 200px;overflow-y: auto;"> -->
+            <div   *ngFor="let a of notifications.data">
+            <ul>
+              <li *ngIf="a.actionwithcomponentid!=a.actionforuserid">
+                <p >
+                {{getName(a.actionwithcomponentid)}} has {{getCorrectActionName(a.actionname)}} with {{getName(a.actionforuserid)}} at {{a.actiontime|date}}
+                <span *ngIf="a.actionname == 'REQUEST_SEND'">
+                  <button class="btn btn-success" (click)="accept(a)">Accept</button>
+                  <button class="btn btn-warning" (click)="reject(a)">Reject</button>
+                  <button class="btn btn-danger" (click)="block(a)">Block</button>
+                 </span>
+                 <span *ngIf="a.actionname == 'WAITING'">
+                   WAITING FOR 
+                  <!-- <button class="btn btn-success" (click)="accept(a)">Accept</button>
+                  <button class="btn btn-warning" (click)="reject(a)">Reject</button>
+                  <button class="btn btn-danger" (click)="block(a)">Block</button> -->
+                 </span>
+                 <small>{{a.actionstatus}}</small>
+                </p>
+              </li>
+              </ul>
+          </div>
+         <div  *ngFor="let n of activities.data" >
+            <ul>
+              <li>
+                
+                <p> {{getName(n.userid)}} has {{n.componentActivityType}} the {{n.componenttype}} at {{n.activityendtime|date}} </p>
+             
+              </li>
+            </ul>
+          </div>
+        </div>
+
+            <!-- <li>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sitz</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sitz</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sitz</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit.</p>
+              </li>
+              <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit.</p></li>
+              <li><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit.</p></li> -->
+           
+      </div>
+      <div class="dropdown">
+     
+        <span class="avatar avatar-sm rounded-circle" data-toggle="dropdown">
+          <img alt="Image placeholder" [src]="dpUrl">
+        </span>
+     
+      <ul class="dropdown-menu">
+        <!-- routerLinkActive="active" [routerLink]="['/user-profile/']" -->
+        <li><button (click)="myprofile()" >My Profile></button></li>
+        <!-- <li><button >Settings</button></li> -->
+        <li><button (click)="logout()">Logout</button></li>
+      </ul>
+      </div>
+      <!--USER PROFILE DROPDOWN-->
+      <!-- <div class="btn-group userDrop">
+        <a href="javascript:;" class="circleLink ml-3" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+            <span class="avatar avatar-sm rounded-circle">
+              <img alt="Image placeholder" [src]="dpUrl">
+            </span>
+            <ul class="dropdown-menu">
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">JavaScript</a></li>
+            </ul>
+            <div class="media-body ml-2 d-none d-lg-block">
+              <span class="mb-0 text-sm  font-weight-bold">{{currentUser.data.username}}</span>
+            </div>
+          </a>
+         
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <div class="d-flex align-items-center justify-content-center box1">
+              <span class="user"><img src="images/svgIcon/circleUser.svg" alt="" /></span> 
+              <a href="javascript:;" class="ml-3">My Profile</a></div>
+            <div class="d-flex box2 btn-group">
+              <a href="javascript:;" class="btn active flex-fill">Online</a> <a href="javascript:;" class="btn flex-fill">Invisible</a>
+            </div>
+            <ul>
+              <li><a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">My Account information</a></li>
+              <li><a routerLinkActive="active" [routerLink]="['/setting']" class="dropdown-item">Change Password</a></li>
+              <li><a href="javascript:;">Switch to Dark mode</a></li>
+              <li><a href="#!" class="dropdown-item" [routerLink]="['/login']" (click)="logout()">Logout</a></li>
+            </ul>
+          </div>
+      </div>
+       -->
+  </div>
+    <!-- <span class="">
+      <img alt="notification" [routerLink]="['/inbox']" src="../../../assets/img/icons/chatIcon.svg">
+    </span>
+    
+    <ul class="navbar-nav align-items-center d-none d-md-flex">
+      <li class="nav-item" ngbDropdown placement="bottom-right">
+        <a class="nav-link pr-0" role="button" ngbDropdownToggle>  
+          <div class="media align-items-center">
+            
+            <span class="avatar avatar-sm rounded-circle">
+              <img alt="notifications" src="../../../assets/img/icons/bell.svg">
+            </span>
+            <div class="media-body ml-2 d-none d-lg-block">
+              <span class="mb-0 text-sm  font-weight-bold"></span>
+            </div>
+          </div>
+        </a>
+        <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+          <div class=" dropdown-header noti-title" *ngFor="let n of notifications.data">
+            <span class="mb-0 text-sm  font-weight-bold">Sanskriti {{n.rowid}}</span>
+            <span class="mb-0 text-sm  font-weight-bold">Agarwal {{n.userid}}</span>
+          </div>
+         
+        </div>
+      </li>
+    </ul> -->
+    <!-- User Toggle-->
+    <!-- <ul class="navbar-nav align-items-center d-none d-md-flex">
+      <li class="nav-item" ngbDropdown placement="bottom-right">
+        <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+          <div class="media align-items-center">
+            <span class="avatar avatar-sm rounded-circle">
+              <img alt="Image placeholder" [src]="dpUrl">
+            </span>
+            <div class="media-body ml-2 d-none d-lg-block">
+              <span class="mb-0 text-sm  font-weight-bold">{{currentUser.data.username}}</span>
+            </div>
+          </div>
+        </a>
+        <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+          <div class=" dropdown-header noti-title">
+            <h6 class="text-overflow m-0">Welcome!</h6>
+          </div>
+          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+            <i class="ni ni-single-02"></i>
+            <span>My profile</span>
+          </a>
+          <a routerLinkActive="active" [routerLink]="['/setting']" class="dropdown-item">
+            <i class="ni ni-settings-gear-65"></i>
+            <span>Settings</span>
+          </a>
+         
+          <div class="dropdown-divider"></div>
+          <a href="#!" class="dropdown-item" [routerLink]="['/login']" (click)="logout()">
+            <i class="ni ni-user-run"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </li>
+    </ul> -->
+  </div>
+</nav>
